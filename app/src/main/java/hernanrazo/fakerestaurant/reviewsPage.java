@@ -18,7 +18,7 @@ public class reviewsPage extends AppCompatActivity {
     private boolean firstResume = false;
 
     private void addDrawerItems() {
-        String[] osArray = { "Home", "Menu", "Daily Specials", "Locations", "Reviews", "Social media", "Contact Us" };
+        String[] osArray = { "Home", "Menu", "Order now", "Locations", "Reviews", "Social media", "Contact Us" };
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, osArray);
         mDrawerList.setAdapter(mAdapter);
 
@@ -35,8 +35,8 @@ public class reviewsPage extends AppCompatActivity {
                     startActivity(menuPageIntent);
                 }
                 else if (position == 2) {
-                    Intent dailySpecialsPageIntent = new Intent(reviewsPage.this, dailySpecialsPage.class);
-                    startActivity(dailySpecialsPageIntent);
+                    Intent orderPageIntent = new Intent(reviewsPage.this, orderPage.class);
+                    startActivity(orderPageIntent);
                 }
                 else if (position == 3) {
                     Intent locationsPageIntent = new Intent(reviewsPage.this, locationsPage.class);

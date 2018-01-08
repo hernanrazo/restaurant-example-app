@@ -10,7 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class dailySpecialsPage extends AppCompatActivity {
+//TODO: add interface for ordering online for delivery or pick up.
+//TODO: Both options should have interfaces to prepay with credit/debit or rewards programs
+//TODO: implement firebase for all this shit
+
+public class orderPage extends AppCompatActivity {
 
     private ListView mDrawerList;
     private DrawerLayout mDrawerLayout;
@@ -18,7 +22,7 @@ public class dailySpecialsPage extends AppCompatActivity {
     private boolean firstResume = false;
 
     private void addDrawerItems() {
-        String[] osArray = { "Home", "Menu", "Daily Specials", "Locations", "Reviews", "Social media", "Contact Us" };
+        String[] osArray = { "Home", "Menu", "Order now", "Locations", "Reviews", "Social media", "Contact Us" };
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, osArray);
         mDrawerList.setAdapter(mAdapter);
 
@@ -27,52 +31,48 @@ public class dailySpecialsPage extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if(position == 0) {
-                    Intent homePageIntent = new Intent(dailySpecialsPage.this, homePage.class);
+                    Intent homePageIntent = new Intent(orderPage.this, homePage.class);
                     startActivity(homePageIntent);
                 }
                 else if (position == 1) {
-                    Intent menuPageIntent = new Intent(dailySpecialsPage.this, menuPage.class);
+                    Intent menuPageIntent = new Intent(orderPage.this, menuPage.class);
                     startActivity(menuPageIntent);
                 }
                 else if (position == 2) {
-                    Intent dailySpecialsPageIntent = new Intent(dailySpecialsPage.this, dailySpecialsPage.class);
-                    startActivity(dailySpecialsPageIntent);
+                    Intent orderPageIntent = new Intent(orderPage.this, orderPage.class);
+                    startActivity(orderPageIntent);
                 }
                 else if (position == 3) {
-                    Intent locationsPageIntent = new Intent(dailySpecialsPage.this, locationsPage.class);
+                    Intent locationsPageIntent = new Intent(orderPage.this, locationsPage.class);
                     startActivity(locationsPageIntent);
                 }
                 else if (position == 4) {
-                    Intent reviewsPageIntent = new Intent(dailySpecialsPage.this, reviewsPage.class);
+                    Intent reviewsPageIntent = new Intent(orderPage.this, reviewsPage.class);
                     startActivity(reviewsPageIntent);
                 }
                 else if (position == 5) {
-                    Intent socialMediaPageIntent = new Intent(dailySpecialsPage.this, socialMediaPage.class);
+                    Intent socialMediaPageIntent = new Intent(orderPage.this, socialMediaPage.class);
                     startActivity(socialMediaPageIntent);
                 }
                 else if (position == 6) {
-                    Intent contactUsIntent = new Intent(dailySpecialsPage.this, contactUsPage.class);
+                    Intent contactUsIntent = new Intent(orderPage.this, contactUsPage.class);
                     startActivity(contactUsIntent);
                 }
             }
         });
     }
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily_specials_page);
+        setContentView(R.layout.activity_home_page);
 
         mDrawerList = findViewById(R.id.navList);
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
         addDrawerItems();
     }
-
+    
     @Override
     protected void onResume() {
         super.onResume();

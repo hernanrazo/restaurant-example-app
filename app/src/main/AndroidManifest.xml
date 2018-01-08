@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".menuPage" />
-        <activity android:name=".dailySpecialsPage" />
         <activity android:name=".locationsPage" />
         <activity android:name=".reviewsPage" />
         <activity android:name=".socialMediaPage" />
-        <activity android:name=".contactUsPage"></activity>
+        <activity android:name=".contactUsPage" />
+        <activity android:name=".orderPage"></activity>
     </application>
 
 </manifest>

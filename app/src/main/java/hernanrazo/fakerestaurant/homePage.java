@@ -17,11 +17,9 @@ public class homePage extends AppCompatActivity {
     private ArrayAdapter<String> mAdapter;
     private boolean firstResume = false;
 
-//TODO: add drawer listings for ordering online for delivery or pick up.
-//TODO: Both options should have interfaces to prepay with credit/debit or rewards programs
 
     private void addDrawerItems() {
-        String[] osArray = { "Home", "Menu", "Daily Specials", "Locations", "Reviews", "Social media", "Contact Us" };
+        String[] osArray = { "Home", "Menu", "Order now", "Locations", "Reviews", "Social media", "Contact Us" };
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, osArray);
         mDrawerList.setAdapter(mAdapter);
 
@@ -38,8 +36,8 @@ public class homePage extends AppCompatActivity {
                     startActivity(menuPageIntent);
                 }
                 else if (position == 2) {
-                    Intent dailySpecialsPageIntent = new Intent(homePage.this, dailySpecialsPage.class);
-                    startActivity(dailySpecialsPageIntent);
+                    Intent orderPageIntent = new Intent(homePage.this, orderPage.class);
+                    startActivity(orderPageIntent);
                 }
                 else if (position == 3) {
                     Intent locationsPageIntent = new Intent(homePage.this, locationsPage.class);
