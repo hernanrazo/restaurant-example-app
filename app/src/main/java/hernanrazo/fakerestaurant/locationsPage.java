@@ -7,11 +7,10 @@ import android.location.Location;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,21 +18,23 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class locationsPage extends FragmentActivity implements OnMapReadyCallback {
+import java.util.ArrayList;
+import java.util.List;
+
+//TODO: make it so the screen automatically zooms to current locations
+public class locationsPage extends AppCompatActivity implements GoogleMap.OnMyLocationButtonClickListener,
+                                                                GoogleMap.OnMyLocationClickListener,
+                                                                OnMapReadyCallback,
+                                                                ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final int GEOLOCATION_PERMISSION_REQUEST = 1;
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -64,10 +65,13 @@ public class locationsPage extends FragmentActivity implements OnMapReadyCallbac
                         listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
                         GEOLOCATION_PERMISSION_REQUEST);
                 locationPermissionGranted = false;
+                //TODO: insert dialog to convince permission
             }
         } else {
+
             if (locationPermission != PackageManager.PERMISSION_GRANTED) {
                 listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
+                locationPermissionGranted = true;
             }
             if (!listPermissionsNeeded.isEmpty()) {
                 ActivityCompat.requestPermissions(this,
@@ -91,13 +95,18 @@ public class locationsPage extends FragmentActivity implements OnMapReadyCallbac
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     locationPermissionGranted = true;
+                    if (ContextCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        mMap.setMyLocationEnabled(true);
+                    }
+
                 } else {
                     Toast.makeText(this, "Location permission needed to continue", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
-        updateLocationUI();
     }
+
 
     private void addDrawerItems() {
         String[] osArray = {"Home", "Menu", "Order now", "Locations", "Reviews", "Social media", "Contact Us"};
@@ -134,66 +143,37 @@ public class locationsPage extends FragmentActivity implements OnMapReadyCallbac
         });
     }
 
-    private void getDeviceLocation() {
-
-        try {
-            if (locationPermissionGranted) {
-
-                Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Location> task) {
-
-                        if (task.isSuccessful()) {
-
-                            mLastKnownLocation = task.getResult();
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),
-                                            mLastKnownLocation.getLongitude()),
-                                    15));
-                        } else {
-                            Log.d(TAG, "Current location is null.");
-                            Log.e(TAG, "Exception: %s", task.getException());
-                        }
-                    }
-                });
-
-            } else {
-                shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION);
-                requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, GEOLOCATION_PERMISSION_REQUEST);
-            }
-        } catch (SecurityException e) {
-            Log.e("Exception: %s", e.getMessage());
-        }
-    }
-
-    private void updateLocationUI() {
-
-        try {
-
-            if (locationPermissionGranted) {
-                mMap.setMyLocationEnabled(true);
-                mMap.getUiSettings().setMyLocationButtonEnabled(true);
-
-            } else {
-                mMap.setMyLocationEnabled(false);
-                mMap.getUiSettings().setMyLocationButtonEnabled(false);
-                mLastKnownLocation = null;
-                geolocationPermission();
-
-            }
-        } catch (SecurityException e) {
-            Log.e("Exception: %s", e.getMessage());
-        }
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-
         geolocationPermission();
-        updateLocationUI();
-        getDeviceLocation();
+
+        mMap.setOnMyLocationButtonClickListener(this);
+        mMap.setOnMyLocationClickListener(this);
+
+        LatLng loc1 = new LatLng(42.0021862,-87.6622885);
+        LatLng loc2 = new LatLng(41.9062128,-87.696963);
+        LatLng loc3 = new LatLng(41.8578586,-87.6150899);
+        LatLng loc4 = new LatLng(41.847741,-87.6490867);
+
+        googleMap.addMarker(new MarkerOptions().position(loc1).title("location 1"));
+        googleMap.addMarker(new MarkerOptions().position(loc2).title("location 2"));
+        googleMap.addMarker(new MarkerOptions().position(loc3).title("location 3"));
+        googleMap.addMarker(new MarkerOptions().position(loc4).title("location 4"));
+    }
+//TODO: remove toasts after finished
+    @Override
+    public void onMyLocationClick(@NonNull Location location) {
+
+        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean onMyLocationButtonClick() {
+        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     @Override
@@ -217,6 +197,7 @@ public class locationsPage extends FragmentActivity implements OnMapReadyCallbac
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
         mapFragment.getMapAsync(this);
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
