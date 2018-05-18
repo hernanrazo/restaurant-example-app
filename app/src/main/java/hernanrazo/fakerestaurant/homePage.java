@@ -1,6 +1,6 @@
 package hernanrazo.fakerestaurant;
 
-import android.content.Intent;
+import android.app.FragmentManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -8,16 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 public class homePage extends AppCompatActivity {
 
-    private ListView mDrawerList;
+
+    //TODO: Replace all other activities with fragments
+    //TODO: Change colors of nav drawer
+    //TODO: include contact us stuff into the homepage to reduce number of fragments
+    
+
     private DrawerLayout mDrawerLayout;
-    private ArrayAdapter<String> mAdapter;
     private boolean firstResume = false;
 
     @Override
@@ -25,21 +25,63 @@ public class homePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        mDrawerList = findViewById(R.id.navList);
         mDrawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.navView);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
 
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                menuItem.setChecked(true);
-                mDrawerLayout.closeDrawers();
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                return false;
-            }
-        });
+                        int id = menuItem.getItemId();
+
+                        switch(id) {
+
+                            case R.id.homePage:
+                                menuItem.setChecked(true);
+                                mDrawerLayout.closeDrawers();
+                                //Todo: add fragment transitions here
+
+                            case R.id.menuPage:
+
+                                menuItem.setChecked(true);
+                                mDrawerLayout.closeDrawers();
+                                //Todo: add fragment transitions here
+
+                            case R.id.orderPage:
+                                menuItem.setChecked(true);
+                                mDrawerLayout.closeDrawers();
+                                //Todo: add fragment transitions here
+
+                            case R.id.locationsPage:
+
+                                menuItem.setChecked(true);
+                                mDrawerLayout.closeDrawers();
+                                //Todo: add fragment transitions here
+
+                            case R.id.reviewsPage:
+
+                                menuItem.setChecked(true);
+                                mDrawerLayout.closeDrawers();
+                                //Todo: add fragment transitions here
+
+                            case R.id.socialMediaPage:
+
+                                menuItem.setChecked(true);
+                                mDrawerLayout.closeDrawers();
+                                //Todo: add fragment transitions here
+
+                            case R.id.contactUsPage:
+
+                                menuItem.setChecked(true);
+                                mDrawerLayout.closeDrawers();
+                                //Todo: add fragment transitions here
+
+                            default: return true;
+                        }
+                    }
+                });
     }
 
     @Override

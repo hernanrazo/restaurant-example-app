@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/homePage"
+            android:checked="true"
+            android:title="Home Page" />
+
+        <item
+            android:id="@+id/menuPage"
+            android:checked="true"
+            android:title="Menu" />
+
+        <item
+            android:id="@+id/orderPage"
+            android:checked="true"
+            android:title="Order Now" />
+
+        <item
+            android:id="@+id/locationsPage"
+            android:checked="true"
+            android:title="Locations" />
+
+        <item
+            android:id="@+id/reviewsPage"
+            android:checked="true"
+            android:title="Reviews" />
+
+        <item
+            android:id="@+id/socialMediaPage"
+            android:checked="true"
+            android:title="Social Media" />
+        <item
+            android:id="@+id/contactUsPage"
+            android:checked="true"
+            android:title="Contact Us" />
+    </group>
+
+</menu>

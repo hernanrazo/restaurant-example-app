@@ -28,7 +28,6 @@
         <activity android:name=".menuPage" />
         <activity android:name=".reviewsPage" />
         <activity android:name=".socialMediaPage" />
-        <activity android:name=".contactUsPage" />
         <activity android:name=".orderPage" />
 
         <meta-data
