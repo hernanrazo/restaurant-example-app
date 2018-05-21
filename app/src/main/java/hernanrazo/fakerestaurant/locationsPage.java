@@ -108,40 +108,6 @@ public class locationsPage extends AppCompatActivity implements GoogleMap.OnMyLo
     }
 
 
-    private void addDrawerItems() {
-        String[] osArray = {"Home", "Menu", "Order now", "Locations", "Reviews", "Social media", "Contact Us"};
-        ArrayAdapter<String> mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, osArray);
-        mDrawerList.setAdapter(mAdapter);
-
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (position == 0) {
-                    Intent homePageIntent = new Intent(locationsPage.this, homePage.class);
-                    startActivity(homePageIntent);
-                } else if (position == 1) {
-                    Intent menuPageIntent = new Intent(locationsPage.this, menuPage.class);
-                    startActivity(menuPageIntent);
-                } else if (position == 2) {
-                    Intent orderPageIntent = new Intent(locationsPage.this, orderPage.class);
-                    startActivity(orderPageIntent);
-                } else if (position == 3) {
-                    Intent locationsPageIntent = new Intent(locationsPage.this, locationsPage.class);
-                    startActivity(locationsPageIntent);
-                } else if (position == 4) {
-                    Intent reviewsPageIntent = new Intent(locationsPage.this, reviewsPage.class);
-                    startActivity(reviewsPageIntent);
-                } else if (position == 5) {
-                    Intent socialMediaPageIntent = new Intent(locationsPage.this, socialMediaPage.class);
-                    startActivity(socialMediaPageIntent);
-                } else if (position == 6) {
-                    Intent contactUsIntent = new Intent(locationsPage.this, contactUsPage.class);
-                    startActivity(contactUsIntent);
-                }
-            }
-        });
-    }
 
 
     @Override
@@ -203,8 +169,6 @@ public class locationsPage extends AppCompatActivity implements GoogleMap.OnMyLo
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         mDrawerList = findViewById(R.id.navList);
         mDrawerLayout = findViewById(R.id.drawer_layout);
-
-        addDrawerItems();
     }
 
     @Override

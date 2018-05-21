@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hernanrazo.fakerestaurant">
 
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -25,10 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".menuPage" />
-        <activity android:name=".reviewsPage" />
-        <activity android:name=".socialMediaPage" />
-        <activity android:name=".orderPage" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -36,7 +29,7 @@
 
         <activity
             android:name=".locationsPage"
-            android:label="@string/title_activity_locations_page"></activity>
+            android:label="@string/title_activity_locations_page" />
     </application>
 
 </manifest>

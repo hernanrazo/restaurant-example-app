@@ -2,40 +2,34 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-
         <item
             android:id="@+id/homePage"
             android:checked="true"
             android:title="Home Page" />
 
         <item
-            android:id="@+id/menuPage"
+            android:id="@+id/menuFragment"
             android:checked="true"
             android:title="Menu" />
 
         <item
-            android:id="@+id/orderPage"
+            android:id="@+id/orderFragment"
             android:checked="true"
             android:title="Order Now" />
 
         <item
-            android:id="@+id/locationsPage"
+            android:id="@+id/locationsFragment"
             android:checked="true"
             android:title="Locations" />
 
         <item
-            android:id="@+id/reviewsPage"
+            android:id="@+id/reviewsFragment"
             android:checked="true"
             android:title="Reviews" />
 
         <item
-            android:id="@+id/socialMediaPage"
+            android:id="@+id/socialMediaFragment"
             android:checked="true"
             android:title="Social Media" />
-        <item
-            android:id="@+id/contactUsPage"
-            android:checked="true"
-            android:title="Contact Us" />
     </group>
-
 </menu>

@@ -1,8 +1,12 @@
 package hernanrazo.fakerestaurant;
 
-import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +15,7 @@ import android.view.MenuItem;
 
 public class homePage extends AppCompatActivity {
 
-
-    //TODO: Replace all other activities with fragments
     //TODO: Change colors of nav drawer
-    //TODO: include contact us stuff into the homepage to reduce number of fragments
-    
 
     private DrawerLayout mDrawerLayout;
     private boolean firstResume = false;
@@ -25,7 +25,6 @@ public class homePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        mDrawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navView);
 
         navigationView.setNavigationItemSelectedListener(
@@ -34,52 +33,60 @@ public class homePage extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
+                        Fragment fragment;
                         int id = menuItem.getItemId();
 
-                        switch(id) {
+                        if (id == R.id.homePage) {
+                            Intent homePageIntent = new Intent(homePage.this, homePage.class);
+                            startActivity(homePageIntent);
+                            menuItem.setChecked(true);
+                            mDrawerLayout.closeDrawers();
 
-                            case R.id.homePage:
-                                menuItem.setChecked(true);
-                                mDrawerLayout.closeDrawers();
-                                //Todo: add fragment transitions here
+                        } else if (id == R.id.menuFragment) {
 
-                            case R.id.menuPage:
+                            fragment = new menuFragment();
 
-                                menuItem.setChecked(true);
-                                mDrawerLayout.closeDrawers();
-                                //Todo: add fragment transitions here
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction ft = fragmentManager.beginTransaction();
+                            ft.replace(R.id.mainContent, fragment);
+                            ft.commit();
 
-                            case R.id.orderPage:
-                                menuItem.setChecked(true);
-                                mDrawerLayout.closeDrawers();
-                                //Todo: add fragment transitions here
+                        } else if (id == R.id.orderFragment) {
 
-                            case R.id.locationsPage:
+                            fragment = new orderFragment();
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction ft = fragmentManager.beginTransaction();
+                            ft.replace(R.id.mainContent, fragment);
+                            ft.commit();
 
-                                menuItem.setChecked(true);
-                                mDrawerLayout.closeDrawers();
-                                //Todo: add fragment transitions here
+                        } else if (id == R.id.locationsFragment) {
 
-                            case R.id.reviewsPage:
+                            fragment = new locationsFragment();
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction ft = fragmentManager.beginTransaction();
+                            ft.replace(R.id.mainContent, fragment);
+                            ft.commit();
 
-                                menuItem.setChecked(true);
-                                mDrawerLayout.closeDrawers();
-                                //Todo: add fragment transitions here
+                        } else if (id == R.id.reviewsFragment) {
 
-                            case R.id.socialMediaPage:
+                            fragment = new reviewsFragment();
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction ft = fragmentManager.beginTransaction();
+                            ft.replace(R.id.mainContent, fragment);
+                            ft.commit();
 
-                                menuItem.setChecked(true);
-                                mDrawerLayout.closeDrawers();
-                                //Todo: add fragment transitions here
+                        } else if (id == R.id.socialMediaFragment) {
 
-                            case R.id.contactUsPage:
-
-                                menuItem.setChecked(true);
-                                mDrawerLayout.closeDrawers();
-                                //Todo: add fragment transitions here
-
-                            default: return true;
+                            fragment = new socialMediaFragment();
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction ft = fragmentManager.beginTransaction();
+                            ft.replace(R.id.mainContent, fragment);
+                            ft.commit();
                         }
+
+                        mDrawerLayout = findViewById(R.id.drawer_layout);
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        return true;
                     }
                 });
     }
