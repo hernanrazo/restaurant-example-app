@@ -12,7 +12,6 @@
         android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </FrameLayout>
 
     <android.support.design.widget.NavigationView
@@ -21,9 +20,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="#181818"
+        app:itemTextColor="#FFFFFF"
         app:menu="@menu/nav_menu_content"/>
-
-
 </android.support.v4.widget.DrawerLayout>
-
-

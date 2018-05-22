@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".reviewsFragment">
+    tools:context=".homeFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent"
-        android:text="reviewsFragment" />
+        android:layout_width="197dp"
+        android:layout_height="114dp"
+
+        android:text="home Fragment" />
 
 </FrameLayout>

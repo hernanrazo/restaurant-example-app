@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#181818"
+    >
+
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/homePage"
+            android:id="@+id/homeFragment"
             android:checked="true"
             android:title="Home Page" />
 

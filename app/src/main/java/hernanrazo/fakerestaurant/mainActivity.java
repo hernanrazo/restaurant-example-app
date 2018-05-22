@@ -1,6 +1,5 @@
 package hernanrazo.fakerestaurant;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -13,17 +12,16 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 
-public class homePage extends AppCompatActivity {
+public class mainActivity extends AppCompatActivity {
 
     //TODO: Change colors of nav drawer
-
     private DrawerLayout mDrawerLayout;
     private boolean firstResume = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_main);
 
         NavigationView navigationView = findViewById(R.id.navView);
 
@@ -36,16 +34,17 @@ public class homePage extends AppCompatActivity {
                         Fragment fragment;
                         int id = menuItem.getItemId();
 
-                        if (id == R.id.homePage) {
-                            Intent homePageIntent = new Intent(homePage.this, homePage.class);
-                            startActivity(homePageIntent);
-                            menuItem.setChecked(true);
-                            mDrawerLayout.closeDrawers();
+                        if (id == R.id.homeFragment) {
+
+                            fragment = new homeFragment();
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction ft = fragmentManager.beginTransaction();
+                            ft.replace(R.id.mainContent, fragment);
+                            ft.commit();
 
                         } else if (id == R.id.menuFragment) {
 
                             fragment = new menuFragment();
-
                             FragmentManager fragmentManager = getSupportFragmentManager();
                             FragmentTransaction ft = fragmentManager.beginTransaction();
                             ft.replace(R.id.mainContent, fragment);
@@ -90,7 +89,6 @@ public class homePage extends AppCompatActivity {
                     }
                 });
     }
-
     @Override
     protected void onResume() {
         super.onResume();
