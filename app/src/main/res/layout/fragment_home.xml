@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,9 +7,16 @@
     tools:context=".homeFragment">
 
     <TextView
-        android:layout_width="197dp"
-        android:layout_height="114dp"
+        android:id="@+id/title"
+        android:text="My Fake Restaurant"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal" />
 
-        android:text="home Fragment" />
+    <TextView
+        android:text="Contact Us:"
+        android:layout_width="90dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal"/>
 
 </FrameLayout>
