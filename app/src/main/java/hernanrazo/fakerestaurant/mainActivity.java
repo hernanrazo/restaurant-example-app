@@ -23,8 +23,13 @@ public class mainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        NavigationView navigationView = findViewById(R.id.navView);
+        //Set homeFragment into view upon launching app
+        FragmentTransaction firstTime = getSupportFragmentManager().beginTransaction();
+        firstTime.replace(R.id.mainContent, new homeFragment());
+        firstTime.commit();
 
+        //Set logic for navigation drawer and fragment transitions
+        NavigationView navigationView = findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
 
