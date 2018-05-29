@@ -1,27 +1,103 @@
 package hernanrazo.fakerestaurant;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class mainActivity extends AppCompatActivity {
 
     //TODO: Change colors of nav drawer
+    private static final int GEOLOCATION_PERMISSION_REQUEST = 1;
+    private boolean locationPermissionGranted = false;
     private DrawerLayout mDrawerLayout;
+    private GoogleMap mMap;
     private boolean firstResume = false;
+
+    private boolean geolocationPermission() {
+
+        int locationPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            if (locationPermission != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
+                locationPermissionGranted = true;
+            }
+            if (!listPermissionsNeeded.isEmpty()) {
+                ActivityCompat.requestPermissions(this,
+                        listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
+                        GEOLOCATION_PERMISSION_REQUEST);
+                locationPermissionGranted = false;
+                //TODO: insert dialog to convince permission
+            }
+        } else {
+
+            if (locationPermission != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
+                locationPermissionGranted = true;
+            }
+            if (!listPermissionsNeeded.isEmpty()) {
+                ActivityCompat.requestPermissions(this,
+                        listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
+                        GEOLOCATION_PERMISSION_REQUEST);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
+
+        locationPermissionGranted = false;
+
+        switch (requestCode) {
+            case GEOLOCATION_PERMISSION_REQUEST:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    locationPermissionGranted = true;
+                    if (ContextCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        mMap.setMyLocationEnabled(true);
+                    }
+
+                } else {
+                    Toast.makeText(this, "Location permission needed to continue", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //request location permission
+        geolocationPermission();
 
         //Set homeFragment into view upon launching app
         FragmentTransaction firstTime = getSupportFragmentManager().beginTransaction();
