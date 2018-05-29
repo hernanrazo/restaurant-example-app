@@ -1,12 +1,16 @@
 package hernanrazo.fakerestaurant;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -17,14 +21,69 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class locationsFragment extends Fragment implements OnMapReadyCallback {
 
+    private static final int GEOLOCATION_PERMISSION_REQUEST = 1;
+    private boolean locationPermissionGranted = false;
     GoogleMap mGoogleMap;
     MapView mapView;
     View mView;
+
     public locationsFragment() {}
+
+    public boolean checkPermission() {
+
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                // Prompt the user once explanation has been shown.
+                requestPermissions(new String[] {
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                }, GEOLOCATION_PERMISSION_REQUEST );
+            } else {
+                // No explanation needed
+                requestPermissions(new String[] {
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                }, GEOLOCATION_PERMISSION_REQUEST );
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
+
+        locationPermissionGranted = false;
+
+        switch (requestCode) {
+            case GEOLOCATION_PERMISSION_REQUEST:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    locationPermissionGranted = true;
+
+                    if (ContextCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        mGoogleMap.setMyLocationEnabled(true);
+                    }
+
+                } else {
+                    Toast.makeText(this, "Location permission needed to continue", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            checkPermission();
+        }
     }
 
     @Override
@@ -34,7 +93,7 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback {
 
         mView = inflater.inflate(R.layout.fragment_locations, container, false);
         return mView;
-
+        checkPermission();
 
     }
 
@@ -72,6 +131,4 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback {
         //TODO: move camera to user's current location
 
     }
-
-
 }
