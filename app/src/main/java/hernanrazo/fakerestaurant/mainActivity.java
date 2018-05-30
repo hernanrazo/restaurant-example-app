@@ -16,9 +16,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,74 +32,67 @@ public class mainActivity extends AppCompatActivity {
     private boolean locationPermissionGranted = false;
     private DrawerLayout mDrawerLayout;
     private GoogleMap mMap;
+    MapFragment mapFragment;
     private boolean firstResume = false;
-
-    private boolean geolocationPermission() {
-
-        int locationPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-
-        List<String> listPermissionsNeeded = new ArrayList<>();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            if (locationPermission != PackageManager.PERMISSION_GRANTED) {
-                listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
-                locationPermissionGranted = true;
-            }
-            if (!listPermissionsNeeded.isEmpty()) {
-                ActivityCompat.requestPermissions(this,
-                        listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
-                        GEOLOCATION_PERMISSION_REQUEST);
-                locationPermissionGranted = false;
-                //TODO: insert dialog to convince permission
-            }
-        } else {
-
-            if (locationPermission != PackageManager.PERMISSION_GRANTED) {
-                listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
-                locationPermissionGranted = true;
-            }
-            if (!listPermissionsNeeded.isEmpty()) {
-                ActivityCompat.requestPermissions(this,
-                        listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
-                        GEOLOCATION_PERMISSION_REQUEST);
-                return false;
-            }
-        }
-        return true;
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
-                                           @NonNull int[] grantResults) {
-
-        locationPermissionGranted = false;
-
-        switch (requestCode) {
-            case GEOLOCATION_PERMISSION_REQUEST:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    locationPermissionGranted = true;
-                    if (ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                        mMap.setMyLocationEnabled(true);
-                    }
-
-                } else {
-                    Toast.makeText(this, "Location permission needed to continue", Toast.LENGTH_SHORT).show();
-                }
-                break;
+                                           String permissions[], int[] grantResults) {
+        if (requestCode == GEOLOCATION_PERMISSION_REQUEST){
+            mapFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
+
+//    public boolean geoLocationPermission() {
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//
+//            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+//                    == PackageManager.PERMISSION_GRANTED) {
+//
+//                locationPermissionGranted = true;
+//
+//            } else {
+//
+//                locationPermissionGranted = false;
+//                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+//                    //show user you need permission in UI
+//                    Toast.makeText(getApplicationContext(), "Locations permission needed to continue", Toast.LENGTH_SHORT).show();
+//                }
+//                requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, GEOLOCATION_PERMISSION_REQUEST);
+//            }
+//        } else {
+//
+//            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, GEOLOCATION_PERMISSION_REQUEST);
+//        }
+//        return false; // return statement from geolocationPermission()
+//    }
+//
+//    public void onRequestPermissionResult(int requestCode,
+//                                          String[] permissions,
+//                                          int [] grantResults) {
+//
+//        if (requestCode == GEOLOCATION_PERMISSION_REQUEST) {
+//
+//            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//
+//
+//            } else {
+//                Toast.makeText(getApplicationContext(), "Locations permission needed to continue", Toast.LENGTH_SHORT).show();
+//            }
+//        } else {
+//            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //request location permission
-        geolocationPermission();
 
         //Set homeFragment into view upon launching app
         FragmentTransaction firstTime = getSupportFragmentManager().beginTransaction();

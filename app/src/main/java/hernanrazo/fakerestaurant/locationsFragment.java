@@ -1,89 +1,165 @@
 package hernanrazo.fakerestaurant;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class locationsFragment extends Fragment implements OnMapReadyCallback {
+public class locationsFragment extends Fragment implements OnMapReadyCallback,
+                                                           GoogleApiClient.ConnectionCallbacks,
+                                                           GoogleApiClient.OnConnectionFailedListener,
+                                                           LocationListener {
 
     private static final int GEOLOCATION_PERMISSION_REQUEST = 1;
-    private boolean locationPermissionGranted = false;
-    GoogleMap mGoogleMap;
+    private GoogleApiClient mGoogleApiClient;
+    private GoogleMap mGoogleMap;
     MapView mapView;
     View mView;
-
+    Location mLastLocation;
+    LocationRequest mLocationRequest;
+    Marker marker;
     public locationsFragment() {}
 
-    public boolean checkPermission() {
-
-        if (ContextCompat.checkSelfPermission(getContext(),
+    @Override
+    public void onConnected(Bundle bundle) {
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(1000);
+        mLocationRequest.setFastestInterval(1000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
+                == PackageManager.PERMISSION_GRANTED) {
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
+                    mLocationRequest, this);
+        }
+    }
 
-            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                // Prompt the user once explanation has been shown.
-                requestPermissions(new String[] {
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                }, GEOLOCATION_PERMISSION_REQUEST );
-            } else {
-                // No explanation needed
-                requestPermissions(new String[] {
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                }, GEOLOCATION_PERMISSION_REQUEST );
-            }
-            return false;
+    @Override
+    public void onConnectionSuspended(int i) {}
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {}
+
+    private void checkLocationPermission() {
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            //do nothing?
+
         } else {
-            return true;
+            //show user explanation in UI
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                //request permission again
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Location Permission Needed")
+                        .setMessage("This feature requires access to your location. Please accept to continue.")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //Prompt the user once explanation has been shown
+                                ActivityCompat.requestPermissions(getActivity(),
+                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                        GEOLOCATION_PERMISSION_REQUEST);
+                            }
+                        })
+                        .create()
+                        .show();
+            }
+            //ask again
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, GEOLOCATION_PERMISSION_REQUEST);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
-                                           @NonNull int[] grantResults) {
-
-        locationPermissionGranted = false;
-
+                                           String permissions[], int[] grantResults) {
         switch (requestCode) {
-            case GEOLOCATION_PERMISSION_REQUEST:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            case GEOLOCATION_PERMISSION_REQUEST: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    locationPermissionGranted = true;
+                    // permission was granted, set user's location
+                    if (ContextCompat.checkSelfPermission(getActivity(),
+                            Manifest.permission.ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
 
-                    if (ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        if (mGoogleApiClient == null) {
+                            buildGoogleApiClient();
+                        }
                         mGoogleMap.setMyLocationEnabled(true);
                     }
 
                 } else {
-                    Toast.makeText(this, "Location permission needed to continue", Toast.LENGTH_SHORT).show();
+                    // permission denied so disable the map feature
+                    Toast.makeText(getActivity(), "permission denied", Toast.LENGTH_LONG).show();
                 }
-                break;
+                return;
+            }
         }
+    }
+
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(getContext())
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    }
+
+    public void onLocationChanged(Location location) {
+
+        mLastLocation = location;
+        if (marker != null) {
+            marker.remove();
+        }
+
+        //Place current location marker
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title("Current Position");
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+        marker = mGoogleMap.addMarker(markerOptions);
+
+        //arrange the camera
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkPermission();
-        }
+        checkLocationPermission();
     }
 
     @Override
@@ -93,8 +169,6 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback {
 
         mView = inflater.inflate(R.layout.fragment_locations, container, false);
         return mView;
-        checkPermission();
-
     }
 
     @Override
@@ -118,6 +192,7 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback {
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
+        //set markers for fake restaurant locations.
         LatLng loc1 = new LatLng(42.0021862, -87.6622885);
         LatLng loc2 = new LatLng(41.9062128, -87.696963);
         LatLng loc3 = new LatLng(41.8578586, -87.6150899);
@@ -128,7 +203,25 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback {
         googleMap.addMarker(new MarkerOptions().position(loc3).title("location 3"));
         googleMap.addMarker(new MarkerOptions().position(loc4).title("location 4"));
 
-        //TODO: move camera to user's current location
+        //recheck for permission
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
 
+                //Permission already granted
+                buildGoogleApiClient();
+                mGoogleMap.setMyLocationEnabled(true);
+
+            } else {
+
+                //call Permission function again
+                checkLocationPermission();
+            }
+        }
+        else {
+            buildGoogleApiClient();
+            mGoogleMap.setMyLocationEnabled(true);
+        }
     }
 }
