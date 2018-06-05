@@ -35,59 +35,19 @@ public class mainActivity extends AppCompatActivity {
     MapFragment mapFragment;
     private boolean firstResume = false;
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        if (requestCode == GEOLOCATION_PERMISSION_REQUEST){
-            mapFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-        else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }
-
-
-//    public boolean geoLocationPermission() {
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//
-//            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-//                    == PackageManager.PERMISSION_GRANTED) {
-//
-//                locationPermissionGranted = true;
-//
-//            } else {
-//
-//                locationPermissionGranted = false;
-//                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
-//                    //show user you need permission in UI
-//                    Toast.makeText(getApplicationContext(), "Locations permission needed to continue", Toast.LENGTH_SHORT).show();
-//                }
-//                requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, GEOLOCATION_PERMISSION_REQUEST);
-//            }
-//        } else {
-//
-//            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, GEOLOCATION_PERMISSION_REQUEST);
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode,
+//                                           String permissions[], int[] grantResults) {
+//        if (requestCode == GEOLOCATION_PERMISSION_REQUEST){
+//            mapFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
 //        }
-//        return false; // return statement from geolocationPermission()
-//    }
-//
-//    public void onRequestPermissionResult(int requestCode,
-//                                          String[] permissions,
-//                                          int [] grantResults) {
-//
-//        if (requestCode == GEOLOCATION_PERMISSION_REQUEST) {
-//
-//            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//
-//
-//            } else {
-//                Toast.makeText(getApplicationContext(), "Locations permission needed to continue", Toast.LENGTH_SHORT).show();
-//            }
-//        } else {
+//        else {
 //            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 //        }
 //    }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

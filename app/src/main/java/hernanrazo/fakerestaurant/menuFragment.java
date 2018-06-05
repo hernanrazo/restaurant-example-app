@@ -18,8 +18,6 @@ public class menuFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_menu, container, false);
     }
 
-//    @Override
-//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-//
-//    }
+
+
 }

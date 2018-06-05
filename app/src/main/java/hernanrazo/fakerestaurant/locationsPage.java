@@ -44,70 +44,14 @@ public class locationsPage extends AppCompatActivity implements GoogleMap.OnMyLo
     private DrawerLayout mDrawerLayout;
     private boolean locationPermissionGranted = false;
 
-    private boolean geolocationPermission() {
 
-        int locationPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
 
-        List<String> listPermissionsNeeded = new ArrayList<>();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            if (locationPermission != PackageManager.PERMISSION_GRANTED) {
-                listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
-                locationPermissionGranted = true;
-            }
-            if (!listPermissionsNeeded.isEmpty()) {
-                ActivityCompat.requestPermissions(this,
-                        listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
-                        GEOLOCATION_PERMISSION_REQUEST);
-                locationPermissionGranted = false;
-                //TODO: insert dialog to convince permission
-            }
-        } else {
-
-            if (locationPermission != PackageManager.PERMISSION_GRANTED) {
-                listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
-                locationPermissionGranted = true;
-            }
-            if (!listPermissionsNeeded.isEmpty()) {
-                ActivityCompat.requestPermissions(this,
-                        listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
-                        GEOLOCATION_PERMISSION_REQUEST);
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
-                                           @NonNull int[] grantResults) {
-
-        locationPermissionGranted = false;
-
-        switch (requestCode) {
-            case GEOLOCATION_PERMISSION_REQUEST:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    locationPermissionGranted = true;
-                    if (ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                        mMap.setMyLocationEnabled(true);
-                    }
-
-                } else {
-                    Toast.makeText(this, "Location permission needed to continue", Toast.LENGTH_SHORT).show();
-                }
-                break;
-        }
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-        geolocationPermission();
+//        geolocationPermission();
 
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
