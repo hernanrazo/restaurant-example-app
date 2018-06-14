@@ -28,203 +28,310 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- appetizers-->
             <TextView
                 android:id="@+id/appetizerTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Appetizers" />
+                android:gravity="center"
+                android:text="Appetizers"
+                android:textColor="@color/colorLetters"
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/appetizer1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="French Fries" />
+                android:layout_marginLeft="18dp"
+                android:text="French Fries"
+                android:textColor="@color/colorLetters"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/appetizer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Onion Rings" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Onion Rings"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/appetizer3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Small Salad" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Small Salad"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/appetizer4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chicken fingers" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Chicken fingers"
+                android:textSize="20dp" />
 
+            <!--entrees-->
             <TextView
                 android:id="@+id/EntreesTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Entrees" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:gravity="center"
+                android:text="Entrees"
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/entree1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cheese burger" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Cheese burger"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/entree2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Caesar salad" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Caesar salad"
+                android:textSize="20dp" />
             <TextView
                 android:id="@+id/entree3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Basic salad" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Basic salad"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/entree4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Steak" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Steak"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/entree5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tacos de lengua" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Tacos de lengua"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/entree6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Spicy fish filet" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Spicy fish filet"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/entree7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="That one thing nobody orders" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="That one thing nobody orders"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/entree8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rotisoree chicken" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Rotisoree chicken"
+                android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/desertsTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Desserts" />
-
-            <TextView
-                android:id="@+id/desert1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Flan" />
-
-            <TextView
-                android:id="@+id/desert2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pot brownies" />
-
-            <TextView
-                android:id="@+id/desert3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Chocolate chip cookies" />
-
-            <TextView
-                android:id="@+id/desert4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Vanilla eclair" />
-
-            <TextView
-                android:id="@+id/desert5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bowl of Fruit" />
-
-            <TextView
-                android:id="@+id/desert6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Chocolate pudding" />
-
-            <TextView
-                android:id="@+id/desert7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lemon cake" />
-
-            <TextView
-                android:id="@+id/desert8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tres leches" />
-
+            <!-- kidsMenu-->
             <TextView
                 android:id="@+id/kidsMenuTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kid's Menu" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:gravity="center"
+                android:text="Kid's Menu"
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/kidsMenu1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chicken Fingers" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Chicken Fingers"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/kidsMenu2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mac and Cheese" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Mac and Cheese"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/kidsMenu3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fries" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Fries"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/kidsMenu4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Veggies lol" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Veggies lol"
+                android:textSize="20dp" />
 
+            <!-- sides-->
             <TextView
                 android:id="@+id/sideDishTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Side Dishes" />
+
+                android:textColor="@color/colorLetters"
+                android:gravity="center"
+                android:text="Side Dishes"
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/side1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sloppy joe" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Sloppy joe"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/side2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Side salad" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Side salad"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/side3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chicken Fajitas" />
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Chicken Fajitas"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/side4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rice" />
-            
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Rice"
+                android:textSize="20dp" />
+
+            <!--deserts-->
+            <TextView
+                android:id="@+id/desertsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLetters"
+                android:gravity="center"
+                android:text="Desserts"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/desert1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Flan"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/desert2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Pot brownies"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/desert3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Chocolate chip cookies"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/desert4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Vanilla eclair"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/desert5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Bowl of Fruit"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/desert6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Chocolate pudding"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/desert7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Lemon cake"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/desert8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/colorLetters"
+                android:text="Tres leches"
+                android:textSize="20dp" />
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
