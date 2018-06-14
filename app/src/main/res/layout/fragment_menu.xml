@@ -23,32 +23,208 @@
         android:layout_gravity="bottom"
         android:fillViewport="true">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/appetizerTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView1" />
+                android:text="Appetizers" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/appetizer1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView2" />
+                android:text="French Fries" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/appetizer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView3" />
+                android:text="Onion Rings" />
 
+            <TextView
+                android:id="@+id/appetizer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Small Salad" />
+
+            <TextView
+                android:id="@+id/appetizer4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chicken fingers" />
+
+            <TextView
+                android:id="@+id/EntreesTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Entrees" />
+
+            <TextView
+                android:id="@+id/entree1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cheese burger" />
+
+            <TextView
+                android:id="@+id/entree2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Caesar salad" />
+            <TextView
+                android:id="@+id/entree3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Basic salad" />
+
+            <TextView
+                android:id="@+id/entree4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Steak" />
+
+            <TextView
+                android:id="@+id/entree5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tacos de lengua" />
+
+            <TextView
+                android:id="@+id/entree6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spicy fish filet" />
+
+            <TextView
+                android:id="@+id/entree7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="That one thing nobody orders" />
+
+            <TextView
+                android:id="@+id/entree8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rotisoree chicken" />
+
+            <TextView
+                android:id="@+id/desertsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Desserts" />
+
+            <TextView
+                android:id="@+id/desert1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Flan" />
+
+            <TextView
+                android:id="@+id/desert2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pot brownies" />
+
+            <TextView
+                android:id="@+id/desert3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chocolate chip cookies" />
+
+            <TextView
+                android:id="@+id/desert4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vanilla eclair" />
+
+            <TextView
+                android:id="@+id/desert5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bowl of Fruit" />
+
+            <TextView
+                android:id="@+id/desert6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chocolate pudding" />
+
+            <TextView
+                android:id="@+id/desert7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lemon cake" />
+
+            <TextView
+                android:id="@+id/desert8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tres leches" />
+
+            <TextView
+                android:id="@+id/kidsMenuTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kid's Menu" />
+
+            <TextView
+                android:id="@+id/kidsMenu1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chicken Fingers" />
+
+            <TextView
+                android:id="@+id/kidsMenu2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mac and Cheese" />
+
+            <TextView
+                android:id="@+id/kidsMenu3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fries" />
+
+            <TextView
+                android:id="@+id/kidsMenu4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Veggies lol" />
+
+            <TextView
+                android:id="@+id/sideDishTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Side Dishes" />
+
+            <TextView
+                android:id="@+id/side1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sloppy joe" />
+
+            <TextView
+                android:id="@+id/side2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Side salad" />
+
+            <TextView
+                android:id="@+id/side3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chicken Fajitas" />
+
+            <TextView
+                android:id="@+id/side4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rice" />
+            
         </LinearLayout>
     </ScrollView>
-
-
 </FrameLayout>
