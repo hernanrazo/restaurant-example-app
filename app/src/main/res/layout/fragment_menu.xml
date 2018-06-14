@@ -36,7 +36,7 @@
                 android:gravity="center"
                 android:text="Appetizers"
                 android:textColor="@color/colorLetters"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/appetizer1"
@@ -45,7 +45,16 @@
                 android:layout_marginLeft="18dp"
                 android:text="French Fries"
                 android:textColor="@color/colorLetters"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/appetizer1Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Fresh crispy fries deep fried to order."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/appetizer2"
@@ -54,7 +63,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Onion Rings"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/appetizer2Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Fresh crispy onions deep fried to order."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/appetizer3"
@@ -63,7 +81,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Small Salad"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/appetizer3Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="romaine lettuce, spinach, cauliflower, greens, choice of dressing on the side."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/appetizer4"
@@ -72,7 +99,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Chicken fingers"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/appetizerDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Fresh chicken made fresh to order."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <!--entrees-->
             <TextView
@@ -83,7 +119,7 @@
                 android:textColor="@color/colorLetters"
                 android:gravity="center"
                 android:text="Entrees"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/entree1"
@@ -92,7 +128,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Cheese burger"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/entree1Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="1/4 lb. meat, wheat bun, lettuce, tomato, american cheese, pickles, and mayo."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/entree2"
@@ -101,7 +146,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Caesar salad"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/entree2Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="romaine lettuce, croutons, lemon juice, olive oil, garlic, anchovies, parmesan, and black pepper."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/entree3"
                 android:layout_width="match_parent"
@@ -109,7 +163,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Basic salad"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/entree3Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="romaine lettuce, spinach, cauliflower, greens, choice of dressing on the side."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/entree4"
@@ -118,7 +181,17 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Steak"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/entree4Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Tender cut beef with a side salad and mashed potatoes."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
+
 
             <TextView
                 android:id="@+id/entree5"
@@ -127,7 +200,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Tacos de lengua"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/entree5Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="whole wheat tortillas filled with cow tongue and authentic Mexican hot sauce."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/entree6"
@@ -135,8 +217,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
-                android:text="Spicy fish filet"
-                android:textSize="20dp" />
+                android:text="Spicy fish fillet"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/entree6Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Fresh cod cut and prepared in-house. Sauteed over skillet."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/entree7"
@@ -145,7 +236,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="That one thing nobody orders"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/entree7Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="It doesn't matter, you're not going to order it anyway."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/entree8"
@@ -153,8 +253,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
-                android:text="Rotisoree chicken"
-                android:textSize="20dp" />
+                android:text="Rotisserie chicken"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/entree8Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="juicy, rotisserie chicken."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <!-- kidsMenu-->
             <TextView
@@ -165,7 +274,7 @@
                 android:textColor="@color/colorLetters"
                 android:gravity="center"
                 android:text="Kid's Menu"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/kidsMenu1"
@@ -174,7 +283,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Chicken Fingers"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/kidsMenu1Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Small, crispy chicken tenders."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/kidsMenu2"
@@ -183,7 +301,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Mac and Cheese"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/kidsMenu2Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Basic mac n' cheese."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/kidsMenu3"
@@ -192,7 +319,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Fries"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/kidsMenu3Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Fresh cut fries deep fried to order."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/kidsMenu4"
@@ -201,18 +337,26 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Veggies lol"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/kidsMenu4Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="kids love veggies"
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <!-- sides-->
             <TextView
                 android:id="@+id/sideDishTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:textColor="@color/colorLetters"
                 android:gravity="center"
                 android:text="Side Dishes"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/side1"
@@ -221,7 +365,16 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Sloppy joe"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/side1Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text=""
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/side2"
@@ -230,7 +383,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Side salad"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/side3"
@@ -239,7 +392,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Chicken Fajitas"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/side4"
@@ -248,7 +401,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Rice"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <!--deserts-->
             <TextView
@@ -258,7 +411,7 @@
                 android:textColor="@color/colorLetters"
                 android:gravity="center"
                 android:text="Desserts"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/desert1"
@@ -267,7 +420,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Flan"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/desert2"
@@ -276,7 +429,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Pot brownies"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/desert3"
@@ -285,7 +438,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Chocolate chip cookies"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/desert4"
@@ -294,7 +447,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Vanilla eclair"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/desert5"
@@ -303,7 +456,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Bowl of Fruit"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/desert6"
@@ -312,7 +465,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Chocolate pudding"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/desert7"
@@ -321,7 +474,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Lemon cake"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/desert8"
@@ -330,7 +483,7 @@
                 android:layout_marginLeft="18dp"
                 android:textColor="@color/colorLetters"
                 android:text="Tres leches"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>
