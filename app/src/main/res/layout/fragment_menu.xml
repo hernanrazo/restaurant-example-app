@@ -372,7 +372,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:text=""
+                android:text="Ground beef, pork, onions, and tomato sauce."
                 android:textColor="@color/colorLetters"
                 android:textSize="15sp" />
 
@@ -386,6 +386,15 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/side2Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Romaine lettuce, olives, celery, cilantro and shit"
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
+
+            <TextView
                 android:id="@+id/side3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -395,6 +404,15 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/side3Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Shredded, seered chicken, red peppers, olive oil, onions, and spices"
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
+
+            <TextView
                 android:id="@+id/side4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -402,6 +420,15 @@
                 android:textColor="@color/colorLetters"
                 android:text="Rice"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/side4Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="White or brown rice steamed and seasoned with spices."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <!--deserts-->
             <TextView
