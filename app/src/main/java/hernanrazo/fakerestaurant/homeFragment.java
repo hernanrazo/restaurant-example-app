@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 public class homeFragment extends Fragment {
 
+    //TODO: save views onpause
+
     public homeFragment() {}
 
     @Override

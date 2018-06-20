@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".orderFragment">
 
+
     <TextView
+        android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="oreder fragment" />
+        android:background="@color/colorPrimaryDark"
+        android:text="Order Now"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize"
+        android:gravity="center_horizontal"/>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="625dp"
+        android:layout_gravity="bottom"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <Button
+                android:id="@+id/orderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Now"
+                android:layout_gravity="bottom|center"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+
 
 </FrameLayout>

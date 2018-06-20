@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+
     tools:context=".menuFragment">
 
     <TextView
         android:id="@+id/heading"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
+        android:layout_height="35dp"
         android:text="Menu"
         android:textColor="@color/colorLetters"
         android:textSize="@dimen/titleLetterSize"
@@ -450,6 +451,15 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/dessert1Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Traditional Mexican pastry."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
+
+            <TextView
                 android:id="@+id/desert2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -457,6 +467,15 @@
                 android:textColor="@color/colorLetters"
                 android:text="Pot brownies"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dessert2Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Homegrown brownies made with special ingredients."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/desert3"
@@ -468,6 +487,15 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/dessert3Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="6cm radius cookie made from organic cookie dough."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
+
+            <TextView
                 android:id="@+id/desert4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -475,6 +503,15 @@
                 android:textColor="@color/colorLetters"
                 android:text="Vanilla eclair"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dessert4Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Small eclair mad eof cookie dough and homemade vanilla toppings."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/desert5"
@@ -486,6 +523,15 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/dessert5Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Bowl filled with in season assorted fruit."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
+
+            <TextView
                 android:id="@+id/desert6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -493,6 +539,15 @@
                 android:textColor="@color/colorLetters"
                 android:text="Chocolate pudding"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dessert6Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Homemade chunky chocolate pudding."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/desert7"
@@ -504,6 +559,15 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/dessert7Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Homemade cake made with batter and lemons."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
+
+            <TextView
                 android:id="@+id/desert8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -511,6 +575,15 @@
                 android:textColor="@color/colorLetters"
                 android:text="Tres leches"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dessert8Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Traditional Mexican dessert made with 3 different milks."
+                android:textColor="@color/colorLetters"
+                android:textSize="15sp" />
 
         </LinearLayout>
     </ScrollView>
