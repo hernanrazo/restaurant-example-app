@@ -26,8 +26,26 @@
         android:textColor="@color/colorLetters"
         android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/summary"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="65dp"
+        android:gravity="left"
+        android:text="Fake Restaurant proudly serves fresh food straight from the farm and onto the table. Come to one of our many locations and see for yourself."
+        android:textColor="@color/colorLetters"
+        android:textSize="15sp" />
+    
+    <!-- TODO: FInd stock images of food and insert here -->
 
-
-
+    <TextView
+        android:id="@+id/contactInfo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="620dp"
+        android:gravity="bottom"
+        android:text="Everything portrayed in this app is fake. This is just a side project I made for fun."
+        android:textColor="@color/colorLetters"
+        android:textSize="15sp" />
 
 </FrameLayout>
