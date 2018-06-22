@@ -35,7 +35,7 @@
         android:text="Fake Restaurant proudly serves fresh food straight from the farm and onto the table. Come to one of our many locations and see for yourself."
         android:textColor="@color/colorLetters"
         android:textSize="15sp" />
-    
+
     <!-- TODO: FInd stock images of food and insert here -->
 
     <TextView

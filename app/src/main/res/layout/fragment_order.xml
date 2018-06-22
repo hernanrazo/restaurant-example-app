@@ -31,7 +31,6 @@
             android:orientation="vertical">
 
 
-
             <Button
                 android:id="@+id/orderButton"
                 android:layout_width="wrap_content"
@@ -39,6 +38,12 @@
                 android:text="Order Now"
                 android:layout_gravity="bottom|center"/>
 
+            <Spinner
+                android:id="@+id/appetizerSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorLetters"
+                android:backgroundTint="@color/colorLetters" />
 
 
         </LinearLayout>
