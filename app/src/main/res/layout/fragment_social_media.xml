@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     tools:context=".socialMediaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="social media fragment" />
+        android:text="Connect Through Social Media"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize"
+        android:gravity="center_horizontal" />
+
+    <!--TODO: add facebook, twitter, and instagram buttons through APIs? -->
 
 </FrameLayout>
