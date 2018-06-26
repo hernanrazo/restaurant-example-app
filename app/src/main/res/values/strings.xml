@@ -14,15 +14,13 @@
 
 
     <string-array name="spinnerAppetizerStrings">
-
         <item>French Fries</item>
         <item>Onion Rings</item>
         <item>Small Salad</item>
         <item>Chicken Fingers</item>
     </string-array>
 
-    <string-array name="SpinnerEntreeStrings">
-
+    <string-array name="spinnerEntreeStrings">
         <item>Cheese Burger</item>
         <item>Caesar Salad</item>
         <item>Basic Salad</item>
@@ -33,8 +31,7 @@
         <item>Rotisserie Chicken</item>
     </string-array>
 
-    <string-array name="SpinnerKidsMenuStrings">
-
+    <string-array name="spinnerKidsMenuStrings">
         <item>Chicken Fingers</item>
         <item>Mac n' Cheese</item>
         <item>Fries</item>
@@ -42,7 +39,6 @@
     </string-array>
 
     <string-array name="spinnerSideDishStrings">
-
         <item>Sloppy Joe</item>
         <item>Side Salad</item>
         <item>Chicken Fajitas</item>

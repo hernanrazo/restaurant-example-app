@@ -45,6 +45,34 @@
                 android:background="@color/colorLetters"
                 android:backgroundTint="@color/colorLetters" />
 
+            <Spinner
+                android:id="@+id/entreeSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorLetters"
+                android:backgroundTint="@color/colorLetters" />
+
+            <Spinner
+                android:id="@+id/kidsMenuSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorLetters"
+                android:backgroundTint="@color/colorLetters" />
+
+            <Spinner
+                android:id="@+id/sideDishSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorLetters"
+                android:backgroundTint="@color/colorLetters" />
+
+            <Spinner
+                android:id="@+id/desertSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorLetters"
+                android:backgroundTint="@color/colorLetters" />
+
 
         </LinearLayout>
     </ScrollView>
