@@ -27,13 +27,12 @@
         <item>Steak</item>
         <item>Tacos De Lengua</item>
         <item>Spicy Fish Fillet</item>
-        <item>That One Thing Nobody Orders</item>
         <item>Rotisserie Chicken</item>
     </string-array>
 
     <string-array name="spinnerKidsMenuStrings">
         <item>Chicken Fingers</item>
-        <item>Mac n' Cheese</item>
+        <item>Mac n Cheese</item>
         <item>Fries</item>
         <item>Veggies LOL</item>
     </string-array>

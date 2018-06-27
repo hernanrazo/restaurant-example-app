@@ -231,24 +231,6 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/entree7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:textColor="@color/colorLetters"
-                android:text="That one thing nobody orders"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/entree7Description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="It doesn't matter, you're not going to order it anyway."
-                android:textColor="@color/colorLetters"
-                android:textSize="15sp" />
-
-            <TextView
                 android:id="@+id/entree8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

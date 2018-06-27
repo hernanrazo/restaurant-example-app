@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
-        android:text="Order Now"
+        android:text="Order Online"
         android:textColor="@color/colorLetters"
         android:textSize="@dimen/titleLetterSize"
         android:gravity="center_horizontal"/>
@@ -35,54 +35,46 @@
                 android:id="@+id/orderButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
                 android:text="Order Now"
                 android:layout_gravity="bottom|center"/>
 
             <Spinner
                 android:id="@+id/appetizerSpinner"
-                android:layout_width="match_parent"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorLetters"
-                android:backgroundTint="@color/colorLetters" />
+                android:background="@color/colorAccent"
+                android:popupBackground="@color/colorAccent" />
 
             <Spinner
                 android:id="@+id/entreeSpinner"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorLetters"
-                android:backgroundTint="@color/colorLetters" />
+                android:gravity="center"
+                android:background="@color/colorAccent"
+                android:popupBackground="@color/colorAccent" />
 
             <Spinner
                 android:id="@+id/kidsMenuSpinner"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorLetters"
-                android:backgroundTint="@color/colorLetters" />
+                android:background="@color/colorAccent"
+                android:popupBackground="@color/colorAccent" />
 
             <Spinner
                 android:id="@+id/sideDishSpinner"
-                android:layout_width="match_parent"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorLetters"
-                android:backgroundTint="@color/colorLetters" />
+                android:background="@color/colorAccent"
+                android:popupBackground="@color/colorAccent" />
 
             <Spinner
                 android:id="@+id/desertSpinner"
-                android:layout_width="match_parent"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorLetters"
-                android:backgroundTint="@color/colorLetters" />
-
+                android:background="@color/colorAccent"
+                android:popupBackground="@color/colorAccent" />
 
         </LinearLayout>
     </ScrollView>
-
-
-
-
-
-
-
-
-
 </FrameLayout>
