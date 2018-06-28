@@ -32,7 +32,7 @@ public class orderFragment extends Fragment {
         appetizerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         appetizerSpinner.setAdapter(appetizerAdapter);
 
-        //setup listener
+        //setup listeners
         appetizerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -44,7 +44,21 @@ public class orderFragment extends Fragment {
                     
                     case "French Fries":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: French Fries", Toast.LENGTH_SHORT).show();
-                        
+                        break;
+
+
+                    case "Onion Rings":
+                        Toast.makeText(getActivity().getBaseContext(), "Selected: Onion Rings", Toast.LENGTH_SHORT).show();
+                        break;
+
+
+                    case "Small Salad":
+                        Toast.makeText(getActivity().getBaseContext(), "Selected: Small Salad", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case "Chicken Fingers":
+                        Toast.makeText(getActivity().getBaseContext(), "Selected: Chicken Fingers", Toast.LENGTH_SHORT).show();
+                        break;
                 }
             }
 
@@ -54,8 +68,6 @@ public class orderFragment extends Fragment {
             }
         });
 
-
-
         Spinner entreeSpinner = view.findViewById(R.id.entreeSpinner);
         ArrayAdapter<CharSequence> entreeAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                                                                                    R.array.spinnerEntreeStrings,
@@ -63,6 +75,40 @@ public class orderFragment extends Fragment {
 
         entreeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         entreeSpinner.setAdapter(entreeAdapter);
+
+        entreeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
+                String item = adapterView.getItemAtPosition(position).toString();
+
+                switch(item) {
+
+                    case "Cheese Burger":
+                        break;
+                    case "Caeser Salad":
+                        break;
+                    case "Basic Salad":
+                        break;
+                    case "Steak":
+                        break;
+                    case "Tacos De Lengua":
+                        break;
+                    case "Spicy Fish Fillet":
+                        break;
+                    case "Rptisserie Chicken":
+                        break;
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         Spinner kidsMenuSpinner = view.findViewById(R.id.kidsMenuSpinner);
         ArrayAdapter<CharSequence> kidsMenuAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
