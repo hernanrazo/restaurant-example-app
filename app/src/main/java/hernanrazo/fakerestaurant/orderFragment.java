@@ -7,25 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class orderFragment extends Fragment {
+
+    Button orderButton;
+
     public orderFragment() {}
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_order, container, false);
+        orderButton = view.findViewById(R.id.orderButton);
 
         //set up all spinners for each section of the menu
-        //set up listeners
-
-        final Spinner appetizerSpinner = view.findViewById(R.id.appetizerSpinner);
-        final ArrayAdapter<CharSequence> appetizerAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+        Spinner appetizerSpinner = view.findViewById(R.id.appetizerSpinner);
+        ArrayAdapter<CharSequence> appetizerAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                                                                                       R.array.spinnerAppetizerStrings,
                                                                                       android.R.layout.simple_spinner_item);
 
@@ -100,8 +101,6 @@ public class orderFragment extends Fragment {
                     case "Rptisserie Chicken":
                         break;
                 }
-
-
             }
 
             @Override
@@ -133,7 +132,7 @@ public class orderFragment extends Fragment {
 
         desertAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         desertSpinner.setAdapter(desertAdapter);
-
+        
         return view;
     }
 }
