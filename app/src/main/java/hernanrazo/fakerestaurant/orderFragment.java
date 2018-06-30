@@ -2,6 +2,7 @@ package hernanrazo.fakerestaurant;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,19 @@ public class orderFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_order, container, false);
+
+        //set listener to transition from orderFragment to confirmOrderFragment
         orderButton = view.findViewById(R.id.orderButton);
+        orderButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                FragmentTransaction toConfirm = getFragmentManager().beginTransaction();
+                toConfirm.replace(R.id.mainContent, new confirmOrderFragment());
+                toConfirm.commit();
+            }
+        });
 
         //set up all spinners for each section of the menu
         Spinner appetizerSpinner = view.findViewById(R.id.appetizerSpinner);
@@ -132,7 +145,7 @@ public class orderFragment extends Fragment {
 
         desertAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         desertSpinner.setAdapter(desertAdapter);
-        
+
         return view;
     }
 }

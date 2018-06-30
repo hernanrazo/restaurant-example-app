@@ -32,22 +32,8 @@ public class mainActivity extends AppCompatActivity {
 
     //TODO: Change colors of nav drawer
     private static final int GEOLOCATION_PERMISSION_REQUEST = 1;
-    private boolean locationPermissionGranted = false;
     private DrawerLayout mDrawerLayout;
-    private GoogleMap mMap;
-    MapFragment mapFragment;
     private boolean firstResume = false;
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode,
-//                                           String permissions[], int[] grantResults) {
-//        if (requestCode == GEOLOCATION_PERMISSION_REQUEST){
-//            mapFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        }
-//        else {
-//            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        }
-//    }
 
 
     @Override
@@ -59,6 +45,12 @@ public class mainActivity extends AppCompatActivity {
         FragmentTransaction firstTime = getSupportFragmentManager().beginTransaction();
         firstTime.replace(R.id.mainContent, new homeFragment());
         firstTime.commit();
+
+        //set logic for switching between orderFragment and confirmOrderFragment
+        FragmentTransaction orderTransition = getSupportFragmentManager().beginTransaction();
+        orderTransition.add(R.id.mainContent, new confirmOrderFragment());
+        orderTransition.commit();
+
 
         //Set logic for navigation drawer and fragment transitions
         NavigationView navigationView = findViewById(R.id.navView);

@@ -8,7 +8,6 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".orderFragment">
 
-
     <TextView
         android:id="@+id/heading"
         android:layout_width="match_parent"
@@ -17,64 +16,60 @@
         android:text="Order Online"
         android:textColor="@color/colorLetters"
         android:textSize="@dimen/titleLetterSize"
-        android:gravity="center_horizontal"/>
+        android:gravity="top|center"/>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="625dp"
-        android:layout_gravity="bottom"
-        android:fillViewport="true">
+    <Spinner
+        android:id="@+id/appetizerSpinner"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorAccent"
+        android:popupBackground="@color/colorAccent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <Spinner
+        android:id="@+id/entreeSpinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="140dp"
+        android:background="@color/colorAccent"
+        android:popupBackground="@color/colorAccent" />
+
+    <Spinner
+        android:id="@+id/kidsMenuSpinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="180dp"
+        android:background="@color/colorAccent"
+        android:popupBackground="@color/colorAccent" />
+
+    <Spinner
+        android:id="@+id/sideDishSpinner"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="220dp"
+        android:background="@color/colorAccent"
+        android:popupBackground="@color/colorAccent" />
+
+    <Spinner
+        android:id="@+id/desertSpinner"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="260dp"
+        android:background="@color/colorAccent"
+        android:popupBackground="@color/colorAccent" />
 
 
-            <Button
-                android:id="@+id/orderButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:text="Order Now"
-                android:layout_gravity="bottom|center"/>
-
-            <Spinner
-                android:id="@+id/appetizerSpinner"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:popupBackground="@color/colorAccent" />
-
-            <Spinner
-                android:id="@+id/entreeSpinner"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="@color/colorAccent"
-                android:popupBackground="@color/colorAccent" />
-
-            <Spinner
-                android:id="@+id/kidsMenuSpinner"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:popupBackground="@color/colorAccent" />
-
-            <Spinner
-                android:id="@+id/sideDishSpinner"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:popupBackground="@color/colorAccent" />
-
-            <Spinner
-                android:id="@+id/desertSpinner"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:popupBackground="@color/colorAccent" />
-
-        </LinearLayout>
-    </ScrollView>
+    <Button
+        android:id="@+id/orderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorAccent"
+        android:text="Order Now" />
 </FrameLayout>
