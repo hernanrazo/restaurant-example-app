@@ -1,5 +1,6 @@
 package hernanrazo.fakerestaurant;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,13 +16,19 @@ import android.widget.Toast;
 public class orderFragment extends Fragment {
 
     Button orderButton;
+    onItemSelectedListener mCallback;
 
     public orderFragment() {}
+
+    //define an interface to allow communication
+    public interface onItemSelectedListener {
+
+        void onItemSelected(String item);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        
 
         View view = inflater.inflate(R.layout.fragment_order, container, false);
 
@@ -59,20 +66,24 @@ public class orderFragment extends Fragment {
                     
                     case "French Fries":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: French Fries", Toast.LENGTH_SHORT).show();
+                        mCallback.onItemSelected(item);
                         break;
 
 
                     case "Onion Rings":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Onion Rings", Toast.LENGTH_SHORT).show();
-                        break;
+                        mCallback.onItemSelected(item);
 
+                        break;
 
                     case "Small Salad":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Small Salad", Toast.LENGTH_SHORT).show();
+                        mCallback.onItemSelected(item);
                         break;
 
                     case "Chicken Fingers":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Chicken Fingers", Toast.LENGTH_SHORT).show();
+                        mCallback.onItemSelected(item);
                         break;
                 }
             }
@@ -148,5 +159,20 @@ public class orderFragment extends Fragment {
         desertSpinner.setAdapter(desertAdapter);
 
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        //make sure mainActivity implements the callback interface.
+        try {
+            mCallback = (onItemSelectedListener) context;
+
+        } catch (ClassCastException e) {
+
+            throw new ClassCastException(context.toString() +
+                    "must implement onItemSelectedListener");
+        }
     }
 }

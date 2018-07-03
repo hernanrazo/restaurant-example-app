@@ -1,6 +1,7 @@
 package hernanrazo.fakerestaurant;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.media.VolumeShaper;
@@ -34,8 +35,6 @@ public class mainActivity extends AppCompatActivity {
     private static final int GEOLOCATION_PERMISSION_REQUEST = 1;
     private DrawerLayout mDrawerLayout;
     private boolean firstResume = false;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
