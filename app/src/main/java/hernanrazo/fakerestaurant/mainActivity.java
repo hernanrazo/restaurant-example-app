@@ -36,6 +36,7 @@ public class mainActivity extends AppCompatActivity {
     private boolean firstResume = false;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +46,6 @@ public class mainActivity extends AppCompatActivity {
         FragmentTransaction firstTime = getSupportFragmentManager().beginTransaction();
         firstTime.replace(R.id.mainContent, new homeFragment());
         firstTime.commit();
-
-        //set logic for switching between orderFragment and confirmOrderFragment
-        FragmentTransaction orderTransition = getSupportFragmentManager().beginTransaction();
-        orderTransition.add(R.id.mainContent, new confirmOrderFragment());
-        orderTransition.commit();
-
 
         //Set logic for navigation drawer and fragment transitions
         NavigationView navigationView = findViewById(R.id.navView);
