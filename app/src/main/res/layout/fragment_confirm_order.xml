@@ -9,12 +9,22 @@
     tools:context=".confirmOrderFragment">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Confirm Fragment"
         android:textColor="@color/colorLetters"
         android:textSize="@dimen/titleLetterSize"
         android:gravity="top|center"/>
+
+    <TextView
+        android:id="@+id/appetizerView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize"
+        android:gravity="center"
+        />
 
     <Button
         android:id="@+id/backButton"
