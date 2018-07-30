@@ -21,12 +21,14 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -36,7 +38,7 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
                                                            GoogleApiClient.OnConnectionFailedListener,
                                                            LocationListener {
 
-    private static final int GEOLOCATION_PERMISSION_REQUEST = 1;
+    private static final int LOCATION_REQUEST = 1;
     private GoogleApiClient mGoogleApiClient;
     private GoogleMap mGoogleMap;
     MapView mapView;
@@ -44,6 +46,9 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
     Location mLastLocation;
     LocationRequest mLocationRequest;
     Marker marker;
+    float lat;
+    float lng;
+
     public locationsFragment() {}
 
     @Override
@@ -66,35 +71,36 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {}
 
-    private void checkLocationPermission() {
+    public boolean locationPermissionCheck() {
 
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+        if(ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            //do nothing?
 
-        } else {
-            //show user explanation in UI
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+            //show explanation for allowing permission
+            if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
 
-                //request permission again
-                new AlertDialog.Builder(getActivity())
-                        .setTitle("Location Permission Needed")
-                        .setMessage("This feature requires access to your location. Please accept to continue.")
+                new AlertDialog.Builder(getActivity()).setTitle("Locations Permission Needed")
+                        .setMessage("Locations permission needed to continue")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //Prompt the user once explanation has been shown
+                            public void onClick(DialogInterface dialog, int which) {
                                 ActivityCompat.requestPermissions(getActivity(),
                                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                        GEOLOCATION_PERMISSION_REQUEST);
+                                        LOCATION_REQUEST);
                             }
-                        })
-                        .create()
-                        .show();
+                        }).create().show();
+
+                //request permission without explanation
+            } else {
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        LOCATION_REQUEST);
             }
-            //ask again
-            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, GEOLOCATION_PERMISSION_REQUEST);
+            return false;
+        } else {
+            return true;
         }
     }
 
@@ -102,7 +108,7 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
         switch (requestCode) {
-            case GEOLOCATION_PERMISSION_REQUEST: {
+            case LOCATION_REQUEST: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -119,7 +125,7 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
                     }
 
                 } else {
-                    // permission denied so disable the map feature
+                    // permission denied
                     Toast.makeText(getActivity(), "permission denied", Toast.LENGTH_LONG).show();
                 }
                 return;
@@ -158,7 +164,11 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        checkLocationPermission();
+        locationPermissionCheck();
+        LatLng coordinate = new LatLng(lat, lng);
+        CameraUpdate currentLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 15);
+        mGoogleMap.animateCamera(currentLocation, 1000, null);
+
     }
 
     @Override
@@ -191,7 +201,7 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        //set markers for fake restaurant locations.
+        //set markers for fake restaurant locations
         LatLng loc1 = new LatLng(42.0021862, -87.6622885);
         LatLng loc2 = new LatLng(41.9062128, -87.696963);
         LatLng loc3 = new LatLng(41.8578586, -87.6150899);
@@ -215,7 +225,7 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
             } else {
 
                 //call Permission function again
-                checkLocationPermission();
+                locationPermissionCheck();
             }
         }
         else {
