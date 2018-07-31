@@ -2,6 +2,7 @@ package hernanrazo.fakerestaurant;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -10,7 +11,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,20 +18,26 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 public class locationsFragment extends Fragment implements OnMapReadyCallback,
                                                            GoogleApiClient.ConnectionCallbacks,
@@ -39,38 +45,18 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
                                                            LocationListener {
 
     private static final int LOCATION_REQUEST = 1;
+    private static final int CHECK_SETTINGS_REQUEST = 0x1;
     private GoogleApiClient mGoogleApiClient;
     private GoogleMap mGoogleMap;
+    private FusedLocationProviderClient mFusedLocClient;
     MapView mapView;
     View mView;
     Location mLastLocation;
-    LocationRequest mLocationRequest;
     Marker marker;
-    float lat;
-    float lng;
 
     public locationsFragment() {}
 
-    @Override
-    public void onConnected(Bundle bundle) {
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
-                    mLocationRequest, this);
-        }
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {}
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {}
-
+    //function for asking for permission
     public boolean locationPermissionCheck() {
 
         if(ContextCompat.checkSelfPermission(getActivity(),
@@ -80,17 +66,6 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
             //show explanation for allowing permission
             if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                new AlertDialog.Builder(getActivity()).setTitle("Locations Permission Needed")
-                        .setMessage("Locations permission needed to continue")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ActivityCompat.requestPermissions(getActivity(),
-                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                        LOCATION_REQUEST);
-                            }
-                        }).create().show();
 
                 //request permission without explanation
             } else {
@@ -160,16 +135,54 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void createLocationRequest() {
+        LocationRequest mLocRequest = new LocationRequest();
+        mLocRequest.setInterval(10000);
+        mLocRequest.setFastestInterval(5000);
+        mLocRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        locationPermissionCheck();
-        LatLng coordinate = new LatLng(lat, lng);
-        CameraUpdate currentLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 15);
-        mGoogleMap.animateCamera(currentLocation, 1000, null);
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(mLocRequest);
 
+        SettingsClient client = LocationServices.getSettingsClient(getActivity());
+        Task<LocationSettingsResponse> task = client.checkLocationSettings(builder.build());
+
+        task.addOnSuccessListener(getActivity(), new OnSuccessListener<LocationSettingsResponse>() {
+            @Override
+            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+
+                //put location request here
+            }
+        });
+
+        task.addOnFailureListener(getActivity(), new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                if(e instanceof ResolvableApiException) {
+
+                    try {
+
+                        ResolvableApiException resolvable = (ResolvableApiException) e;
+                        resolvable.startResolutionForResult(getActivity(),
+                                CHECK_SETTINGS_REQUEST);
+
+                    } catch (IntentSender.SendIntentException sendEx) {
+                        //ignore
+                    }
+                }
+            }
+        });
     }
+
+    @Override
+    public void onConnected(Bundle bundle) {}
+
+    @Override
+    public void onConnectionSuspended(int i) {}
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {}
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -197,11 +210,42 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+        //recheck for permission
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+
+                //Permission already granted, continue normally
+                buildGoogleApiClient();
+                //mGoogleMap.setMyLocationEnabled(true);
+
+                mFusedLocClient.getLastLocation().addOnSuccessListener(getActivity(),
+                        new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+
+                        if (location != null) {
+
+                            //get location logic here
+                        }
+                    }
+                });
+
+            } else {
+
+                //ask for permission again
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        LOCATION_REQUEST);
+            }
+        }
+
         MapsInitializer.initialize(getContext());
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        //set markers for fake restaurant locations
+        //set markers for fake locations
         LatLng loc1 = new LatLng(42.0021862, -87.6622885);
         LatLng loc2 = new LatLng(41.9062128, -87.696963);
         LatLng loc3 = new LatLng(41.8578586, -87.6150899);
@@ -211,26 +255,17 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
         googleMap.addMarker(new MarkerOptions().position(loc2).title("location 2"));
         googleMap.addMarker(new MarkerOptions().position(loc3).title("location 3"));
         googleMap.addMarker(new MarkerOptions().position(loc4).title("location 4"));
+    }
 
-        //recheck for permission
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-                //Permission already granted
-                buildGoogleApiClient();
-                mGoogleMap.setMyLocationEnabled(true);
+        locationPermissionCheck();
 
-            } else {
+        mFusedLocClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
-                //call Permission function again
-                locationPermissionCheck();
-            }
-        }
-        else {
-            buildGoogleApiClient();
-            mGoogleMap.setMyLocationEnabled(true);
-        }
+
+
     }
 }
