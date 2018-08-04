@@ -3,7 +3,6 @@ package hernanrazo.fakerestaurant;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +14,9 @@ import android.widget.Toast;
 
 public class orderFragment extends Fragment {
 
+    //TODO: make real fragment communication
+
     Button orderButton;
-    onItemSelectedListener mCallback;
-
-    public orderFragment() {}
-
-    //define an interface to allow communication
-    public interface onItemSelectedListener {
-
-        void onItemSelected(String item);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,16 +24,15 @@ public class orderFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_order, container, false);
 
-        //set listener to transition from orderFragment to confirmOrderFragment
+        //set listener for order button
         orderButton = view.findViewById(R.id.orderButton);
         orderButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                FragmentTransaction toConfirm = getFragmentManager().beginTransaction();
-                toConfirm.replace(R.id.mainContent, new confirmOrderFragment());
-                toConfirm.commit();
+                Toast.makeText(getActivity().getBaseContext(), "Order Made!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -66,24 +57,24 @@ public class orderFragment extends Fragment {
                     
                     case "French Fries":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: French Fries", Toast.LENGTH_SHORT).show();
-                        mCallback.onItemSelected(item);
+                        //mCallback.onItemSelected(item);
                         break;
 
 
                     case "Onion Rings":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Onion Rings", Toast.LENGTH_SHORT).show();
-                        mCallback.onItemSelected(item);
+                        //mCallback.onItemSelected(item);
 
                         break;
 
                     case "Small Salad":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Small Salad", Toast.LENGTH_SHORT).show();
-                        mCallback.onItemSelected(item);
+                        //mCallback.onItemSelected(item);
                         break;
 
                     case "Chicken Fingers":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Chicken Fingers", Toast.LENGTH_SHORT).show();
-                        mCallback.onItemSelected(item);
+                        //mCallback.onItemSelected(item);
                         break;
                 }
             }
@@ -165,14 +156,6 @@ public class orderFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        //make sure mainActivity implements the callback interface.
-        try {
-            mCallback = (onItemSelectedListener) context;
 
-        } catch (ClassCastException e) {
-
-            throw new ClassCastException(context.toString() +
-                    "must implement onItemSelectedListener");
-        }
     }
 }

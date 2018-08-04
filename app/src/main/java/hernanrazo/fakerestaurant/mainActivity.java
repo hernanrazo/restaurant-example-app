@@ -22,8 +22,7 @@ import com.google.android.gms.maps.MapFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class mainActivity extends AppCompatActivity
-        implements orderFragment.onItemSelectedListener {
+public class mainActivity extends AppCompatActivity {
 
     //TODO: Change colors of nav drawer
     private static final int GEOLOCATION_PERMISSION_REQUEST = 1;
@@ -31,15 +30,6 @@ public class mainActivity extends AppCompatActivity
     private boolean firstResume = false;
 
 
-  public void onItemSelected(String item) {
-
-      confirmOrderFragment confirmOrderFragment = new confirmOrderFragment();
-      Bundle bundle = new Bundle();
-      confirmOrderFragment.setArguments(bundle);
-
-//      confirmOrderFragment confirmOrderFragment = getSupportFragmentManager().getFragment();
-//      confirmOrderFragment.updateMenuItems(item);
-  }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

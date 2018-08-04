@@ -25,13 +25,58 @@
         android:textColor="@color/colorLetters"
         android:textSize="@dimen/titleLetterSize"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="130dp"/>
+        android:layout_marginTop="86dp"
+        android:layout_marginRight="100sp"/>
+
+    <TextView
+        android:id="@+id/entreeTitle"
+        android:layout_width="125dp"
+        android:layout_height="30dp"
+        android:text="Entree"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="127dp"
+        android:layout_marginRight="100sp" />
+
+    <TextView
+        android:id="@+id/kidsMenuTitle"
+        android:layout_width="125dp"
+        android:layout_height="30dp"
+        android:text="Kid's Item"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="170dp"
+        android:layout_marginRight="100sp"/>
+
+    <TextView
+        android:id="@+id/sideDishTitle"
+        android:layout_width="125dp"
+        android:layout_height="30dp"
+        android:text="Side Dish"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="210dp"
+        android:layout_marginRight="100sp"/>
+
+    <TextView
+        android:id="@+id/desertTitle"
+        android:layout_width="125dp"
+        android:layout_height="30dp"
+        android:text="Dessert"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="249dp"
+        android:layout_marginRight="100sp"/>
 
     <Spinner
         android:id="@+id/appetizerSpinner"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="100dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
@@ -40,7 +85,7 @@
         android:id="@+id/entreeSpinner"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="140dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
@@ -49,7 +94,7 @@
         android:id="@+id/kidsMenuSpinner"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="180dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
@@ -58,7 +103,7 @@
         android:id="@+id/sideDishSpinner"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="220dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
@@ -67,7 +112,7 @@
         android:id="@+id/desertSpinner"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="260dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
