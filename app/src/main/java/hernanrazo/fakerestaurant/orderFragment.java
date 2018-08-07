@@ -60,7 +60,6 @@ public class orderFragment extends Fragment {
                         //mCallback.onItemSelected(item);
                         break;
 
-
                     case "Onion Rings":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Onion Rings", Toast.LENGTH_SHORT).show();
                         //mCallback.onItemSelected(item);
@@ -155,7 +154,5 @@ public class orderFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
-
     }
 }

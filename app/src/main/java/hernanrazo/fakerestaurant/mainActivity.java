@@ -25,8 +25,9 @@ import java.util.List;
 public class mainActivity extends AppCompatActivity {
 
     //TODO: Change colors of nav drawer
-    private static final int GEOLOCATION_PERMISSION_REQUEST = 1;
     private DrawerLayout mDrawerLayout;
+    private orderFragment orderFragment;
+    private confirmOrderFragment confirmOrderFragment;
     private boolean firstResume = false;
 
 
@@ -35,6 +36,8 @@ public class mainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         //Set homeFragment into view upon launching app
         FragmentTransaction firstTime = getSupportFragmentManager().beginTransaction();
@@ -76,6 +79,11 @@ public class mainActivity extends AppCompatActivity {
                             ft.replace(R.id.mainContent, fragment);
                             ft.commit();
 
+                            fragment = new confirmOrderFragment();
+                            FragmentManager confirmOrderFragmentManager = getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = confirmOrderFragmentManager.beginTransaction();
+                            ft.replace(R.id.confirmOrderFragment, fragment);
+                            fragmentTransaction.commit();
                         } else if (id == R.id.locationsFragment) {
 
                             fragment = new locationsFragment();
