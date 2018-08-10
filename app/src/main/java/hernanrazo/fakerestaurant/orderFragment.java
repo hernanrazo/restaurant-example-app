@@ -14,15 +14,6 @@ import android.widget.Toast;
 
 public class orderFragment extends Fragment {
 
-
-
-    //TODO: make real fragment communication
-
-    public interface orderFragmentListener {
-        void onSpinnerItemSent(CharSequence input);
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,30 +53,22 @@ public class orderFragment extends Fragment {
                     
                     case "French Fries":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: French Fries", Toast.LENGTH_SHORT).show();
-                        //mCallback.onItemSelected(item);
-                        CharSequence inputOne = appetizerSpinner.getPrompt();
-                        orderFragmentListener.onSpinnerItemSent(inputOne);
+
                         break;
 
                     case "Onion Rings":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Onion Rings", Toast.LENGTH_SHORT).show();
                         //mCallback.onItemSelected(item);
-                        CharSequence inputTwo = appetizerSpinner.getPrompt();
-
-
                         break;
 
                     case "Small Salad":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Small Salad", Toast.LENGTH_SHORT).show();
                         //mCallback.onItemSelected(item);
-                        CharSequence inputThree = appetizerSpinner.getPrompt();
-
                         break;
 
                     case "Chicken Fingers":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Chicken Fingers", Toast.LENGTH_SHORT).show();
                         //mCallback.onItemSelected(item);
-                        CharSequence inputFour = appetizerSpinner.getPrompt();
 
                         break;
                 }
@@ -167,5 +150,7 @@ public class orderFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+
     }
 }
