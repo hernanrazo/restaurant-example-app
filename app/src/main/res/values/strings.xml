@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Fake Restaurant</string>
-    <string name="title_activity_daily_specials_page">dailySpecialsPage</string>
     <string name="title_activity_locations_page">locationsPage</string>
     <string name="title_activity_reviews_page">reviewsPage</string>
     <string name="welcomeText">Welcome to Fake Restaurant</string>
@@ -54,8 +53,4 @@
         <item>Lemon Cake</item>
         <item>Tres Leches</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>

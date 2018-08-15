@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class orderFragment extends Fragment {
@@ -19,6 +20,13 @@ public class orderFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_order, container, false);
+
+        //instantiate each TextView in the confirm order section
+        TextView appetizerString =view.findViewById(R.id.appetizerConfirm);
+
+
+
+
 
         //set listener for order button
         Button orderButton = view.findViewById(R.id.orderButton);
@@ -41,6 +49,7 @@ public class orderFragment extends Fragment {
         appetizerSpinner.setAdapter(appetizerAdapter);
 
         //setup listeners
+        //appetizer listener
         appetizerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -52,22 +61,22 @@ public class orderFragment extends Fragment {
                     
                     case "French Fries":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: French Fries", Toast.LENGTH_SHORT).show();
+                        //TODO actually change string value here
 
                         break;
 
                     case "Onion Rings":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Onion Rings", Toast.LENGTH_SHORT).show();
-                        //mCallback.onItemSelected(item);
+
                         break;
 
                     case "Small Salad":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Small Salad", Toast.LENGTH_SHORT).show();
-                        //mCallback.onItemSelected(item);
+
                         break;
 
                     case "Chicken Fingers":
                         Toast.makeText(getActivity().getBaseContext(), "Selected: Chicken Fingers", Toast.LENGTH_SHORT).show();
-                        //mCallback.onItemSelected(item);
 
                         break;
                 }

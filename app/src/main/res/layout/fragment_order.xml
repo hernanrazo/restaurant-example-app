@@ -26,7 +26,7 @@
         android:textSize="@dimen/titleLetterSize"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="46dp"
-        android:layout_marginRight="100sp"/>
+        android:layout_marginStart="-100sp"/>
 
     <TextView
         android:id="@+id/entreeTitle"
@@ -37,7 +37,7 @@
         android:textSize="@dimen/titleLetterSize"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="87dp"
-        android:layout_marginRight="100sp" />
+        android:layout_marginStart="-100sp" />
 
     <TextView
         android:id="@+id/kidsMenuTitle"
@@ -48,7 +48,7 @@
         android:textSize="@dimen/titleLetterSize"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="130dp"
-        android:layout_marginRight="100sp"/>
+        android:layout_marginStart="-100dp"/>
 
     <TextView
         android:id="@+id/sideDishTitle"
@@ -59,7 +59,7 @@
         android:textSize="@dimen/titleLetterSize"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="170dp"
-        android:layout_marginRight="100sp"/>
+        android:layout_marginStart="-100sp"/>
 
     <TextView
         android:id="@+id/desertTitle"
@@ -70,13 +70,13 @@
         android:textSize="@dimen/titleLetterSize"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="209dp"
-        android:layout_marginRight="100sp"/>
+        android:layout_marginStart="-100sp"/>
 
     <Spinner
         android:id="@+id/appetizerSpinner"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="55dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
@@ -85,7 +85,7 @@
         android:id="@+id/entreeSpinner"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="95dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
@@ -94,7 +94,7 @@
         android:id="@+id/kidsMenuSpinner"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="135dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
@@ -103,7 +103,7 @@
         android:id="@+id/sideDishSpinner"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="175dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
@@ -112,19 +112,10 @@
         android:id="@+id/desertSpinner"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="220dp"
         android:background="@color/colorAccent"
         android:popupBackground="@color/colorAccent" />
-
-    <Button
-        android:id="@+id/orderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="290dp"
-        android:background="@color/colorAccent"
-        android:text="Order Now" />
 
     <TextView
         android:id="@+id/confirmTitle"
@@ -135,18 +126,109 @@
         android:textColor="@color/colorLetters"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="280dp" />
-    
+
     <TextView
         android:id="@+id/appetizerConfirm"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="320dp"
         android:text="Appetizer"
         android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize" />
+
+    <TextView
+        android:id="@+id/entreeConfirm"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="350dp"
+        android:text="Entree"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize" />
+
+    <TextView
+        android:id="@+id/kidsItemConfirm"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="380dp"
+        android:text="Kid's Item"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize" />
+
+    <TextView
+        android:id="@+id/sideDishConfirm"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="410dp"
+        android:text="Side Dish"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize" />
+
+    <TextView
+        android:id="@+id/DessertConfirm"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="440dp"
+        android:text="Dessert"
+        android:textColor="@color/colorLetters"
+        android:textSize="@dimen/titleLetterSize" />
+
+    <TextView
+        android:id="@+id/appetizerString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="320dp"
         android:textSize="@dimen/titleLetterSize"
+        android:textColor="@color/colorLetters"/>
 
+    <TextView
+        android:id="@+id/entreeString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="350dp"
+        android:textSize="@dimen/titleLetterSize"
+        android:textColor="@color/colorLetters"/>
 
+    <TextView
+        android:id="@+id/kidsItemString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="380dp"
+        android:textSize="@dimen/titleLetterSize"
+        android:textColor="@color/colorLetters"/>
 
-        />
+    <TextView
+        android:id="@+id/sideDishString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="410dp"
+        android:textSize="@dimen/titleLetterSize"
+        android:textColor="@color/colorLetters"/>
+
+    <TextView
+        android:id="@+id/dessertString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="440dp"
+        android:textSize="@dimen/titleLetterSize"
+        android:textColor="@color/colorLetters"/>
+
+    <Button
+        android:id="@+id/orderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="290dp"
+        android:background="@color/colorAccent"
+        android:text="Order Now" />
+
 </FrameLayout>
