@@ -28,7 +28,6 @@ public class orderFragment extends Fragment {
             public void onClick(View view) {
 
                 Toast.makeText(getActivity().getBaseContext(), "Order Made!", Toast.LENGTH_SHORT).show();
-
             }
         });
 
