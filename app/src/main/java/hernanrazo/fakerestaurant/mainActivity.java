@@ -30,8 +30,6 @@ public class mainActivity extends AppCompatActivity {
 
     private boolean firstResume = false;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

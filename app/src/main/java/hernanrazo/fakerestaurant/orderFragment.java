@@ -40,7 +40,7 @@ public class orderFragment extends Fragment {
             }
         });
 
-        //set up all spinners for each section of the menu
+        //set up all spinners and listeners for each section of the menu
         final Spinner appetizerSpinner = view.findViewById(R.id.appetizerSpinner);
         final ArrayAdapter<CharSequence> appetizerAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                                                                                       R.array.spinnerAppetizerStrings,
@@ -49,8 +49,6 @@ public class orderFragment extends Fragment {
         appetizerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         appetizerSpinner.setAdapter(appetizerAdapter);
 
-        //setup listeners
-        //appetizer listener
         appetizerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -61,28 +59,23 @@ public class orderFragment extends Fragment {
                 switch(item) {
                     
                     case "French Fries":
-                        Toast.makeText(getActivity().getBaseContext(), "Selected: French Fries", Toast.LENGTH_SHORT).show();
                         //TODO: There's clearly a better way to do these string changes
-                        //TODO: take off toasts when finished
 
                         final String frenchFries = "French Fries";
                         appetizerString.setText(frenchFries);
                         break;
 
                     case "Onion Rings":
-                        Toast.makeText(getActivity().getBaseContext(), "Selected: Onion Rings", Toast.LENGTH_SHORT).show();
                         final String onionRings = "Onion Rings";
                         appetizerString.setText(onionRings);
                         break;
 
                     case "Small Salad":
-                        Toast.makeText(getActivity().getBaseContext(), "Selected: Small Salad", Toast.LENGTH_SHORT).show();
                         final String smallSalad = "Small Salad";
                         appetizerString.setText(smallSalad);
                         break;
 
                     case "Chicken Fingers":
-                        Toast.makeText(getActivity().getBaseContext(), "Selected: Chicken Fingers", Toast.LENGTH_SHORT).show();
                         final String chickenFingers = "Chicken Fingers";
                         appetizerString.setText(chickenFingers);
                         break;
@@ -92,8 +85,8 @@ public class orderFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
-                //TODO: change textview to ''no item' or some shit
-
+                final String nothingSelected = "Nothing Selected";
+                appetizerString.setText(nothingSelected);
             }
         });
 
@@ -155,6 +148,9 @@ public class orderFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+                final String nothingSelected = "Nothing Selected";
+                entreeString.setText(nothingSelected);
+
             }
         });
 
@@ -199,10 +195,10 @@ public class orderFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+                final String nothingSelected = "Nothing Selected";
+                kidsItemString.setText(nothingSelected);
             }
         });
-
-
 
         Spinner sideDishSpinner = view.findViewById(R.id.sideDishSpinner);
         ArrayAdapter<CharSequence> sideDishAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
@@ -210,6 +206,8 @@ public class orderFragment extends Fragment {
                                                                                      android.R.layout.simple_spinner_item);
 
         sideDishAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sideDishSpinner.setAdapter(sideDishAdapter);
+
         sideDishSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
@@ -243,16 +241,20 @@ public class orderFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+                final String nothingSelected = "Nothing Selected";
+                sideDishString.setText(nothingSelected);
             }
         });
 
-        Spinner desertSpinner = view.findViewById(R.id.desertSpinner);
-        ArrayAdapter<CharSequence> desertAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+        Spinner dessertSpinner = view.findViewById(R.id.desertSpinner);
+        ArrayAdapter<CharSequence> dessertAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                                                                                    R.array.spinnerDesertStrings,
                                                                                    android.R.layout.simple_spinner_item);
 
-        desertAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        desertSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        dessertAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dessertSpinner.setAdapter(dessertAdapter);
+
+        dessertSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
 
@@ -264,20 +266,40 @@ public class orderFragment extends Fragment {
                         final String flan = "Flan";
                         dessertString.setText(flan);
                         break;
-                        
+
                     case "Pot Brownies":
+                        final String potBrownies = "Pot Brownies";
+                        dessertString.setText(potBrownies);
                         break;
+
                     case "Chocolate Chip Cookies":
+                        final String chocoChipCookies = "Chocolate Chip Cookies";
+                        dessertString.setText(chocoChipCookies);
                         break;
+
                     case "Vanilla Eclair":
+                        final String vanillaEclair = "Vanilla Eclair";
+                        dessertString.setText(vanillaEclair);
                         break;
+
                     case "Bowl of Fruit":
+                        final String bowlOfFruit = "Bowl of Fruit";
+                        dessertString.setText(bowlOfFruit);
                         break;
+
                     case "Chocolate Pudding":
+                        final String chocoPudding = "Chocolate Pudding";
+                        dessertString.setText(chocoPudding);
                         break;
+
                     case "Lemon Cake":
+                        final String lemonCake = "Lemon Cake";
+                        dessertString.setText(lemonCake);
                         break;
+
                     case "Tres Leches":
+                        final String tresLeches = "Tres Leches";
+                        dessertString.setText(tresLeches);
                         break;
                 }
             }
@@ -285,9 +307,10 @@ public class orderFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+                final String nothingSelected = "Nothing Selected";
+                dessertString.setText(nothingSelected);
             }
         });
-
 
         return view;
     }
@@ -295,7 +318,5 @@ public class orderFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
-
     }
 }

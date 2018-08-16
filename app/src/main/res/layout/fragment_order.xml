@@ -7,6 +7,7 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".orderFragment">
 
+    <!-- TODO: make this shit less ugly -->
     <TextView
         android:id="@+id/heading"
         android:layout_width="match_parent"
