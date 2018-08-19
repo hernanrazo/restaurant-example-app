@@ -147,7 +147,7 @@ public class locationsFragment extends Fragment implements OnMapReadyCallback,
 
                         if (task.isSuccessful()) {
 
-                            mLastKnownLocation = task.getResult();
+                            mLastKnownLocation = task.getResult(); // why the fuck wont this work???
                             mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),
                                     mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
 
